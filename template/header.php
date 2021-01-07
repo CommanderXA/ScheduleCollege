@@ -1,3 +1,6 @@
+<?php
+  require_once('./secure.php');
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -89,7 +92,7 @@ desired effect
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -168,14 +171,14 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs"><b>Hello</b>, Alexander Pierce</span>
+              <span class="hidden-xs"><b>Hello</b>, <?=$_SESSION['fio']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <p>
-                  Alexander Henry Pierce
-                  <small>Administrator</small>
+                  <?=$_SESSION['fio']?>
+                  <small><?=$_SESSION['roleName']?></small>
                 </p>
               </li>
 
@@ -185,7 +188,9 @@ desired effect
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <form method="POST">
+                    <button type="submit" class="btn btn-default btn-flat" name="out">Sign Out</button>
+                  </form>
                 </div>
               </li>
             </ul>
