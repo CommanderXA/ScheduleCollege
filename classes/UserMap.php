@@ -1,16 +1,18 @@
 <?php
     class UserMap extends BaseMap {
+
+        const USER = 'user';
+        const TEACHER = 'teacher';
+        const STUDENT = 'student';
+
         public function auth($login, $password) {
             $login = $this->db->quote($login);
-            $res = $this->db->query("SELECT user.user_id,
-            CONCAT(user.lastname,' ', user.firstname, ' ', user.patronymic) AS fio, "
-             . "user.pass, role.sys_name, role.name FROM user "
-             . "INNER JOIN role ON user.role_id=role.role_id "
-             . "WHERE user.login = $login AND user.active = 1");
+            $res = $this->db->query("SELECT user.user_id, CONCAT(user.lastname,' ', user.firstname, ' ', user.patronymic) AS fio, "
+                                    . "user.pass, role.sys_name, role.name FROM user "
+                                    . "INNER JOIN role ON user.role_id=role.role_id "
+                                    . "WHERE user.login = $login AND user.active = 1");
             $user = $res->fetch(PDO::FETCH_OBJ);
-            var_dump($user, $password);
             if ($user) {
-                var_dump(password_verify($password, $user->pass));
                 if (password_verify($password, $user->pass)) {
                     return $user;
                 }
@@ -47,10 +49,12 @@
             if (!$this->existsLogin($user->login)) {
                 if ($user->user_id == 0) {
                     return $this->insert($user);
-                } else {
-                    return $this->update($user);
-                }
+                } 
             }
+            else {
+                return $this->update($user);
+            }
+
             return false;
         }
 
@@ -75,7 +79,7 @@
             $login = $this->db->quote($user->login);
             $pass = $this->db->quote($user->pass);
             $birthday = $this->db->quote($user->birthday);
-            if ( $this->db->exec("UPDATE user SET lastname = $lastname, firstname = $firstname, patronymic = $patronymic," . " login = $login, pass = $pass, gender_id = $user->gender_id, birthday = $birthday, role_id = $user->role_id, active = $user->active "
+            if ( $this->db->exec("UPDATE user SET lastname = $lastname, firstname = $firstname, patronymic = $patronymic, login = $login, pass = $pass, gender_id = $user->gender_id, birthday = $birthday, role_id = $user->role_id, active = $user->active "
             . "WHERE user_id = ".$user->user_id) == 1) {
                 return true;
             }
@@ -104,6 +108,19 @@
                 return $res->fetch(PDO::FETCH_OBJ);
             }
             return false;
+        }
+
+        public function identity($id) {
+            if ((new TeacherMap())->findById($id)->validate()) {
+                return self::TEACHER;
+            }
+            if ((new StudentMap())->findById($id)->validate()) {
+                return self::STUDENT;
+            }
+            if ($this->findById($id)->validate()) {
+                return self::USER;
+            }
+            return null;
         }
     }
 ?>

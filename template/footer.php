@@ -14,7 +14,7 @@
       
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2021 <a href="#">Polytechnic College</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2021 <a href="#">Polytechnic College</a>.</strong> Все права защищены.
   </footer>
 
   <!-- Control Sidebar -->

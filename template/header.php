@@ -185,11 +185,11 @@ desired effect
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Профиль</a>
                 </div>
                 <div class="pull-right">
                   <form method="POST">
-                    <button type="submit" class="btn btn-default btn-flat" name="out">Sign Out</button>
+                    <button type="submit" class="btn btn-default btn-flat" name="out">Выход</button>
                   </form>
                 </div>
               </li>

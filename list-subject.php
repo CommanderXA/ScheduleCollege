@@ -10,10 +10,10 @@
     } else {
         $page = 1;
     }
-    $specialMap = new SpecialMap();
-    $count = $specialMap->count();
-    $specials = $specialMap->findAll($page*$size-$size, $size);
-    $header = 'Список специальностей';
+    $subjectMap = new SubjectMap();
+    $count = $subjectMap->count();
+    $subjects = $subjectMap->findAll($page*$size-$size, $size);
+    $header = 'Список предметов';
     require_once 'template/header.php';
 ?>
 <div class="row">
@@ -27,32 +27,34 @@
                 </ol>
             </section>
             <div class="box-body">
-                <a class="btn btn-success" href="add-special.php">Добавить специальность</a>
+                <a class="btn btn-success" href="add-subject.php">Добавить предмет</a>
             </div>
             <div class="box-body">
                 <?php
-                    if ($specials) {
+                    if ($subjects) {
                 ?>
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Название</th>
                             <th>Отдел</th>
+                            <th>Часы</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            foreach ($specials as $special) {
+                            foreach ($subjects as $subject) {
                                 echo '<tr>';
-                                echo '<td><a href="view-special.php?id='.$special->special_id.'">'.$special->name.'</a> ' . '<a href="add-special.php?id='.$special->special_id.'"><i class="fa fa-pencil"></i></a></td>';
-                                echo '<td>'.$special->otdel.'</td>';
+                                echo '<td><a href="view-subject.php?id='.$subject->subject_id.'">'.$subject->name.'</a> ' . '<a href="add-subject.php?id='.$subject->subject_id.'"><i class="fa fa-pencil"></i></a></td>';
+                                echo '<td>'.$subject->otdel.'</td>';
+                                echo '<td>'.$subject->hours.'</td>';
                                 echo '</tr>';
                             }
                         ?>
                     </tbody>
                 </table>
                 <?php } else {
-                    echo 'Ни одной специальности не найдено';
+                    echo 'Ни одного предмета не найдено';
                 } ?>
             </div>
             <div class="box-body">

@@ -19,6 +19,8 @@
                     $teacher->user_id = $user->user_id;
                     return $this->insert($teacher);
                 } else {
+                    // var_dump($user);
+                    // var_dump($teacher);
                     return $this->update($teacher);
                 }
             }

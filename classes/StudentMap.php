@@ -5,7 +5,7 @@
                 $res = $this->db->query("SELECT user_id, gruppa_id, num_zach
                                         FROM student 
                                         WHERE user_id = $id");
-                $student = $res->fetchObject("Teacher");
+                $student = $res->fetchObject("Student");
                 if ($student) {
                     return $student;
                 } 

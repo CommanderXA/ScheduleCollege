@@ -1,5 +1,10 @@
 <?php
     require_once 'secure.php';
+    if (!Helper::can('admin') && !Helper::can('manager')) {
+        header('Location: 404.php');
+        exit();
+    }
+
     if (isset($_POST['user_id'])) {
         $user = new User();
         $user->lastname = Helper::clearString($_POST['lastname']);
@@ -12,10 +17,13 @@
         $user->gender_id = Helper::clearInt($_POST['gender_id']);
         $user->role_id = Helper::clearInt($_POST['role_id']);
         $user->active = Helper::clearInt($_POST['active']);
+
+
         if (isset($_POST['saveTeacher'])) {
             $teacher = new Teacher();
             $teacher->otdel_id = Helper::clearInt($_POST['otdel_id']);
             $teacher->user_id = $user->user_id;
+
             if ((new TeacherMap())->save($user, $teacher)) {
                 header('Location: profile-teacher.php?id='.$teacher->user_id);
             } else {

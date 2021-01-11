@@ -1,7 +1,7 @@
 <?php
     require_once 'autoload.php';
     session_start();
-    $message = 'Sign in to watch schedule of classes';
+    $message = 'Войдите для просмотра расписаний';
     if (isset($_SESSION['role'])) {
         header('Location: index.php');
         exit;
@@ -18,7 +18,7 @@
             header('Location: index.php');
             exit;
         } else {
-            $message = '<span style="color:red;">Login or Password is not correct</span>';
+            $message = '<span style="color:red;">Логин или пароль не верны</span>';
         }
     }
     require_once 'template/login.php';

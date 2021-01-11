@@ -9,8 +9,8 @@
         public function validate() {
             if(!empty($this->name) &&
                 !empty($this->otdel_id)) {
-                    return true;
-                }
+                return true;
+            }
             return false;
         }
     }

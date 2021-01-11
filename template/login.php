@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Schedule of classes | Log in</title>
+  <title>Расписание занятий | Вход</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Schedule of classes</b></a>
+    <a href="../../index2.html"><b>Расписание занятий</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -38,17 +38,17 @@
 
     <form action="auth.php" method="post">
       <div class="form-group has-feedback">
-        <input name="login" type="text" class="form-control" placeholder="Login">
+        <input name="login" type="text" class="form-control" placeholder="Логин">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input name="password" type="password" class="form-control" placeholder="Password">
+        <input name="password" type="password" class="form-control" placeholder="Пароль">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Войти</button>
         </div>
         <!-- /.col -->
       </div>

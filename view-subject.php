@@ -6,8 +6,8 @@
     }
     if (isset($_GET['id'])) {
         $id = Helper::clearInt($_GET['id']);
-        $classroom = (new ClassroomMap())->findViewById($id);
-        $header = 'Просмотр аудитории';
+        $subject = (new SubjectMap())->findViewById($id);
+        $header = 'Просмотр специальности';
         require_once 'template/header.php';
 ?>
         <div class="row">
@@ -17,18 +17,26 @@
                         <h1><?=$header;?></h1>
                         <ol class="breadcrumb">
                             <li><a href="index.php"><i class="fa fa-dashboard"></i> Главная</a></li>
-                            <li><a href="list-classroom.php">Аудитории</a></li>
+                            <li><a href="list-subject.php">Предметы</a></li>
                             <li class="active"><?=$header;?></li>
                         </ol>
                     </section>
                     <div class="box-body">
-                        <a class="btn btn-success" href="add-classroom.php?id=<?=$id;?>">Изменить</a>
+                        <a class="btn btn-success" href="add-subject.php?id=<?=$id;?>">Изменить</a>
                     </div>
                     <div class="box-body">
                         <table class="table table-bordered table-hover">
                             <tr>
                                 <th>Название</th>
-                                <td><?=$classroom->name;?></td>
+                                <td><?=$subject->name;?></td>
+                            </tr>
+                            <tr>
+                                <th>Отдел</th>
+                                <td><?=$subject->otdel;?></td>
+                            </tr>
+                            <tr>
+                                <th>Часы</th>
+                                <td><?=$subject->hours;?></td>
                             </tr>
                         </table>
                     </div>
